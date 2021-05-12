@@ -601,17 +601,26 @@
 - control_key: SI-4 (23)
   standard_key: NIST-800-53
   covered_by: []
-  implementation_status: planned
+  implementation_status: complete
   narrative:
     - text: |
-        The customer will be responsible for installing host-based monitoring
-        mechanisms. A successful control response will need to discuss how
-        various elements of the OpenShift infrastructure are monitored.
+        OpenShift offers several out-of-the-box mechanisms to aid administrators
+        in doing proper host-based monitoring. To begin with, access to the
+        nodes themselves is already a high-privilege operation, so any such
+        access will go through the audit logs. OpenShift enables auditing for
+        both Kubernetes/OpenShift and the hosts themselves.
 
-        A control response for SI-4(20) is planned. Engineering progress can be
-        tracked via:
+        Host configuration has to be done exclusively through MachineConfig
+        objects. Access and modification to the aforementioned objects will be
+        logged in the Kubernetes audit logs.
 
-        https://issues.redhat.com/browse/CMP-540
+        Finally, to detect unauthorized access to the host's files,
+        OpenShift administrators can install the File Integrity Operator [1].
+
+        For further host-based monitoring capabilities, administrators
+        are encouraged to install third party solutions.
+
+        [1] https://docs.openshift.com/container-platform/latest/security/file_integrity_operator/file-integrity-operator-installation.html
 
 - control_key: SI-4 (24)
   standard_key: NIST-800-53
